@@ -1,6 +1,7 @@
 $purple :#E0DDFC;
 $darkPurple: #764FDB;
 
+
 @mixin backgroundPurpleContainer {
     display: flex;
     justify-content: center;
@@ -11,10 +12,11 @@ $darkPurple: #764FDB;
     gap: 0.5rem;
 }
 
-@mixin darkPurpleTitle{
+@mixin darkPurpleTitle {
     color: $darkPurple;
     font-weight: 650;
 }
+
 .container {
     background-repeat: no-repeat;
     background-position: center;
@@ -22,7 +24,6 @@ $darkPurple: #764FDB;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-
     img,
     svg {
         vertical-align: middle;
@@ -33,11 +34,59 @@ $darkPurple: #764FDB;
     //     width: 100%;
     //     height: 100%;
     // }
+
+    .playstore_container {
+        width: 480px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 11px;
+        border: 1px solid #E3E8EF;
+        border-radius: 12px;
+        margin-block: .5rem;
+       
+        .playstore_content{
+            gap: .25rem !important;
+            display: flex !important;
+            align-items: center;
+            gap: .25rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            @media (max-width: 768px) {
+                font-size: smaller;
+                flex-direction: column;
+                justify-content: center;
+                gap: 4px;
+            }
+            .smart_content{
+                p{
+                    margin-bottom: 0;
+                }
+                @media (max-width: 768px) {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    p{
+                        margin: 0
+                    }
+                }
+            }
+        }
+        .store_icon_container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            
+            
+        }
+    }
+
     .login_container {
         width: 100vw;
         height: 100vh;
         display: flex;
         justify-content: center;
+        flex-direction: column;
         align-items: center;
 
         .login_card {
@@ -71,7 +120,7 @@ $darkPurple: #764FDB;
                 text-align: center;
                 margin: 0 auto;
                 max-width: 100%;
-                width: 430px;
+                max-width: 430px;
                 padding: 6px 30px;
 
                 .welcome_title {
@@ -84,33 +133,142 @@ $darkPurple: #764FDB;
                     width: 170px;
                     height: 88px;
                 }
+
                 .login_form {
                     text-align: center;
                     margin: 0 auto;
                     max-width: 100%;
                     padding: 6px 0;
-                    input{
+
+                    input {
                         margin-bottom: 5px;
                         padding: 8px 12px;
                         font-family: inherit;
+                        font-size: 15px;
                         margin-block: 5px;
                         font-weight: 550;
-                        width: 100%;
+                        width: 100% !important;
+                    }
+
+                    .p-password {
+                        width: 100% !important;
+
                     }
                 }
-                .help_container{
+
+                .help_container {
                     display: flex;
                     justify-content: space-between;
                     align-self: center;
-                    padding: 6px ;
+                    padding: 6px;
+                    margin-top: -10px;
 
-                    span{
+                    span {
                         @include darkPurpleTitle;
                         cursor: pointer;
                         font-size: 14px
                     }
                 }
+
+                .login_btn {
+                    background-color: $darkPurple !important;
+                    width: 100%;
+                    border: none !important;
+                    color: white !important;
+                    font-family: 'NotoSans';
+
+                    margin-top: 5px;
+                    margin-bottom: -5px;
+                }
+
+                .confirm_btn {
+                    background-color: $darkPurple !important;
+                    width: 100%;
+                    border: none !important;
+                    color: white !important;
+                    font-family: 'NotoSans';
+
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                }
+
+                .policy_p {
+                    color: #4b5565;
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+
+                .back_icon_container {
+                    display: flex;
+                    gap: 0.5rem;
+                    align-items: center;
+                    color: $darkPurple;
+                    font-size: 16px;
+                    font-weight: 580;
+                    line-height: 24px;
+                    margin-bottom: 0.5rem;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .otp_description {
+                    color: #2f3031;
+                    font-size: 16px;
+                    font-weight: 400;
+                    text-align: left;
+                    margin-top: 0;
+                    margin-bottom: 1rem;
+
+                    span {
+                        font-weight: 600;
+                    }
+                }
+
+                .otp_container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 10px;
+
+                    input {
+                        width: 64px;
+                        height: 72px;
+                        font-size: 26px;
+                        text-align: center;
+                        color: #121926;
+                        line-height: 32px;
+                        font-weight: 600;
+                    }
+
+                    @media (min-width: 768px) {
+                        padding-bottom: 0.5rem;
+                    }
+                }
+
+                .resend_container {
+                    display: flex;
+                    text-align: start;
+                    margin-top: 5px;
+                    margin-bottom: 30px;
+
+                    span {
+                        font-size: small
+                    }
+
+                    .resend_text {
+                        text-decoration: underline;
+                        color: $darkPurple;
+                        font-weight: 650;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
             }
+
 
             .global_school_group_container {
                 @include backgroundPurpleContainer;

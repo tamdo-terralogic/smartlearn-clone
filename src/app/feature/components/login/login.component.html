@@ -1,4 +1,5 @@
 <div class="container" [style.backgroundImage]="'url(' + backgroundImg + ')'">
+    <!-- <div class="container"> -->
     <div class="login_container">
         <div class="login_card">
             <!-- Header form title -->
@@ -50,25 +51,86 @@
             <div class="login_card_content">
                 <p class="welcome_title">Welcome!</p>
                 <img class="giisLogoImg" [src]="giisLogoImg" alt="GIIS Logo">
-                <form class="login_form" #form="ngForm">
-                    <input type="text" pInputText [(ngModel)]="loginObj.username" name="username"  placeholder="Username or email"/>
 
-                    <input type="text" pInputText [(ngModel)]="loginObj.password" name="password" placeholder="Password"/>
+                <!-- login section -->
+                <div *ngIf="!isConfirmValue">
+                    <form class="login_form" #form="ngForm">
+                        <input type="text" pInputText [(ngModel)]="loginObj.email" name="email"
+                            placeholder="Username or email" />
 
-                </form>
-                <div class="help_container">
-                    <span>Forgot Password?</span>
-                    <span>Help?</span>
+                        <p-password [toggleMask]="true" [feedback]="false" [(ngModel)]="loginObj.password"
+                            name="password" placeholder="Password" />
+
+                    </form>
+                    <div class="help_container">
+                        <span>Forgot Password?</span>
+                        <span>Help?</span>
+                    </div>
+                    <button (click)="onLogin()" pButton label="Sign In" class="login_btn">
+                    </button>
+                    <p class="policy_p">By signing in, I agree to the Smartlearn Privacy Statement and Terms of Service
+                    </p>
                 </div>
+
+                <!-- confirm section -->
+                <div *ngIf="isConfirmValue">
+                    <div class="back_icon_container" (click)="changeIsConfirmState(false)">
+                        <span class="pi pi-arrow-left"></span>
+                        <span>Back</span>
+                    </div>
+                    <p class="otp_description">
+                        Please enter OTP sent to your
+                        <span>
+                            email {{maskedEmail()}}
+                        </span>
+                        <span>
+                            and
+                        </span>
+                        <span>
+                            phone number {{maskedPhone()}}
+                        </span>
+                    </p>
+                    <div class="otp_container">
+                        <p-inputotp [(ngModel)]="confirmObj.loginOpt" />
+                    </div>
+                    <button (click)="onConfirm()" pButton label="Confirm" class="confirm_btn">
+                    </button>
+                    <div class="resend_container">
+                        <span>Didn't receive code?</span>
+                        &nbsp;&nbsp;
+                        <span class="resend_text">Resend OTP</span>
+                    </div>
+
+                </div>
+
             </div>
 
             <!-- Footer form title -->
-             <div class="global_school_group_container">
+            <div class="global_school_group_container">
                 <p>
                     Member of
                 </p>
                 <img [src]="globalSchoolGroupIcon" alt="">
-             </div>
+            </div>
+        </div>
+        <div class="playstore_container">
+            <div class="playstore_content">
+                <div class="smart_content">
+                    <p class="mb-0">SmartLearn app is available.</p>
+                    <span>Download Now!</span>
+                </div>
+                <div class="store_icon_container">
+
+                    <a _ngcontent-ng-c843744306=""
+                        href="https://play.google.com/store/apps/details?id=com.smartlearn.ai" target="_blank"><img
+                            _ngcontent-ng-c843744306="" [src]="googlePlaySvg" alt="" width="110px"
+                            height="35"></a>
+                    <a _ngcontent-ng-c843744306="" href="https://apps.apple.com/in/app/smart-learn-app/id6463868037"
+                        target="_blank"><img _ngcontent-ng-c843744306="" [src]="appleStoreSvg" alt=""
+                            width="110px" height="34"></a>
+                </div>
+            </div>
         </div>
     </div>
+
 </div>

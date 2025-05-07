@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -13,8 +15,10 @@ import { AppComponent } from './app.component';
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserModule
+    BrowserModule,
+    ToastModule
   ],
+  providers: [MessageService]
   
 })
 export class AppModule { }

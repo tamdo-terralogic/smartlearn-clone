@@ -1,10 +1,11 @@
 .container {
     flex: 1;
+
     /* take all remaining space under navbar */
     @media (min-width: 768px) {
         display: flex;
     }
-    
+
     overflow: hidden;
     /* important: prevent page scroll */
 
@@ -17,15 +18,18 @@
         margin-right: calc(-.5 * var(--bs-gutter-x));
         margin-left: calc(-.5 * var(--bs-gutter-x));
     }
+
     @media (max-width: 767px) {
         .ga-notice-sidebar {
             height: fit-content !important;
         }
     }
+
     .side_section {
         background-color: white;
         flex-shrink: 0;
         display: flex;
+        justify-content: space-between;
         flex-direction: column;
         overflow-y: hidden;
         flex: 0 0 auto;
@@ -39,7 +43,7 @@
 
         }
 
-        
+
         .homeText {
             color: #121926;
             line-height: 32px;
@@ -72,6 +76,46 @@
 
 
         }
+
+        .suggest-card {
+            @media (max-width: 768px) {
+                display: none;
+            }
+            .p-carousel-indicator-list{
+
+            }
+            .p-carousel-indicator-active .p-carousel-indicator-button {
+                background: #121926 !important;
+            }
+
+            background-color: #f8fafc;
+            padding: 10px;
+            border-radius: 8px;
+
+            .suggest-card-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding-inline: 10px;
+                img{
+                    margin-bottom: 0.5rem;
+                }
+
+                h3 {
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #121926;
+                    margin: 0;
+                }
+                p{
+                    font-weight: 400;
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+        }
+
     }
 
     .scrollable_container {
@@ -111,7 +155,8 @@
                 position: relative;
                 top: 0;
                 left: 0;
-                display: block;
+                display: flex;
+                justify-content: center;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -126,40 +171,46 @@
                 border-radius: 8px;
                 min-height: 184px;
                 max-height: 100%;
-                .board_content{
+
+                .board_content {
                     padding-left: 10px;
                 }
             }
-            
+
         }
-        .hrline{
-            color: #e3e8ef !important;  
+
+        .hrline {
+            color: #e3e8ef !important;
             margin-block: 10px;
         }
-        .e_notice_text{
+
+        .e_notice_text {
             margin-left: 10px;
             font-weight: 600;
             font-size: 16px;
             color: #121926;
         }
-        .community_container{
+
+        .community_container {
             border-radius: 8px;
             background-color: white;
             text-align: center !important;
             padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-    padding-right: 1rem !important;
-    padding-left: 1rem !important;
-    margin-top: 1rem !important;
+            padding-bottom: 3rem !important;
+            padding-right: 1rem !important;
+            padding-left: 1rem !important;
+            margin-top: 1rem !important;
         }
     }
 }
-.badge{
+
+.badge {
     padding: 2px 8px;
     border-radius: 16px;
     background: #e6fbff;
 }
-.card{
+
+.card {
     --bs-card-spacer-y: 1rem;
     --bs-card-spacer-x: 1rem;
     --bs-card-title-spacer-y: .5rem;
@@ -180,8 +231,7 @@
     --bs-card-img-overlay-padding: 1rem;
     --bs-card-group-margin: .75rem;
     position: relative;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     min-width: 0;
     height: var(--bs-card-height);
@@ -192,6 +242,7 @@
     border: var(--bs-card-border-width) solid var(--bs-card-border-color);
     border-radius: var(--bs-card-border-radius);
 }
+
 .box-shadow {
     box-shadow: 0 1px 3px #10182826;
 }

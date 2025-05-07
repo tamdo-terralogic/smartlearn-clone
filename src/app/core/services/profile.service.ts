@@ -15,7 +15,7 @@ export class ProfileService {
   }
   authService = inject(AuthService);
   getProfile() {
-    const token = this.authService.getToken(); 
+    const token = this.authService.getToken();
 
     if (!token) {
       this.router.navigate(['/login']);
@@ -24,7 +24,7 @@ export class ProfileService {
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `${token}` 
+      'Authorization': `${token}`
     });
 
     const url = `${environment.APIKEY}/Staff/GetUserDetailForHeader`;

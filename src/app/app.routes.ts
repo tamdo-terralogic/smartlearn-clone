@@ -20,6 +20,7 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                // loadChildren: () => import('./feature/components/dashboard').then
                 component: DashboardComponent
             },
             {

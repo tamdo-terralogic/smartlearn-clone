@@ -10,6 +10,23 @@
 
             </div>
         </div>
+        <p-carousel [value]="cards" [numVisible]="1" [numScroll]="1" [circular]="false" [showNavigators]="false"
+        class="suggest-card"
+        indicatorStyleClass ="background"
+        [indicatorStyle]="{
+            width:'12px',
+            height:'12px',
+            'background-color':'#00000'
+        }"
+        >
+            <ng-template let-card pTemplate="item">
+                <div class="suggest-card-content">
+                    <img [src]="card.icon">
+                    <h3>{{card.header}}</h3>
+                    <p>{{card.content}}</p>
+                </div>
+            </ng-template>
+        </p-carousel>
     </div>
 
     <div class="scrollable_container">

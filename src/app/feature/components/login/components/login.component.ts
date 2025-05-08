@@ -1,8 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 
-import { Toast, ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../../../../core/services/AuthService/auth.service';
 import { ConfirmObject, LoginObject, LoginResponse } from '../../../../models/login.model';
@@ -13,14 +12,17 @@ import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { InputOtpModule } from 'primeng/inputotp';
 import { NgIf } from '@angular/common';
+import { Toast, ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports:[
-    FormsModule, InputTextModule, ButtonModule, PasswordModule, InputOtpModule, NgIf, ToastModule
-  ]
+  standalone: false,
+  // imports:[
+  //   FormsModule, InputTextModule, ButtonModule, PasswordModule, InputOtpModule, NgIf, ToastModule
+  // ]
+
  // encapsulation: ViewEncapsulation.None, // <-- add this
 
 })
@@ -28,8 +30,8 @@ import { NgIf } from '@angular/common';
 export class LoginComponent {
   authService = inject(AuthService);
   isConfirm = (false);
-  maskedPhone = ("");
-  maskedEmail = ("");
+  maskedPhone = signal("");
+  maskedEmail = signal("");
   // backgroundImg = '@/assets/GIISBG.jpg';
   backgroundImg = 'assets/GIISBG.jpg';
   smartLearnAiImg = 'assets/smartlearn.png';
@@ -176,8 +178,8 @@ export class LoginComponent {
             token: res.token || null,
           };
           this.changeIsConfirmState(true);
-          this.maskedPhone = (this.maskSensitiveInfo(this.loginResObj.phoneNo));
-          this.maskedEmail = (this.maskSensitiveInfo(this.loginResObj.email));
+          this.maskedPhone = signal(this.maskSensitiveInfo(this.loginResObj.phoneNo));
+          this.maskedEmail = signal(this.maskSensitiveInfo(this.loginResObj.email));
           this.confirmObj = {
             brandID: 1,
             campusID: 1,

@@ -1,34 +1,35 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, inject, NgModule, OnInit, signal, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormsModule, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+
+
+import { Toast, ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { AuthService } from '../../../../core/services/AuthService/auth.service';
+import { ConfirmObject, LoginObject, LoginResponse } from '../../../../models/login.model';
+import { getRandomArbitrary } from '../../../../../util/RandomBetweenTwoValue';
+import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { environment } from '../../../../environments/environment';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { InputOtpModule } from 'primeng/inputotp';
 import { NgIf } from '@angular/common';
-import { getRandomArbitrary } from '../../../../util/RandomBetweenTwoValue';
-import { ConfirmObject, LoginObject, LoginResponse } from '../../../models/login.model';
-import { AuthService } from '../../../core/services/AuthService/auth.service';
-import { Toast, ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
-  providers:[MessageService],
-  imports: [FormsModule, InputTextModule, ButtonModule, PasswordModule, InputOtpModule, NgIf, ToastModule, Toast],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  encapsulation: ViewEncapsulation.None, // <-- add this
+  imports:[
+    FormsModule, InputTextModule, ButtonModule, PasswordModule, InputOtpModule, NgIf, ToastModule
+  ]
+ // encapsulation: ViewEncapsulation.None, // <-- add this
 
 })
 
 export class LoginComponent {
   authService = inject(AuthService);
-  isConfirm = signal(false);
-  maskedPhone = signal("");
-  maskedEmail = signal("");
+  isConfirm = (false);
+  maskedPhone = ("");
+  maskedEmail = ("");
   // backgroundImg = '@/assets/GIISBG.jpg';
   backgroundImg = 'assets/GIISBG.jpg';
   smartLearnAiImg = 'assets/smartlearn.png';
@@ -131,11 +132,11 @@ export class LoginComponent {
   // http = inject(HttpClient);
 
   get isConfirmValue() {
-    return this.isConfirm();
+    return this.isConfirm;
   }
 
   changeIsConfirmState(state: boolean) {
-    this.isConfirm.set(state)
+    this.isConfirm = (state)
   }
 
 
@@ -175,8 +176,8 @@ export class LoginComponent {
             token: res.token || null,
           };
           this.changeIsConfirmState(true);
-          this.maskedPhone.set(this.maskSensitiveInfo(this.loginResObj.phoneNo));
-          this.maskedEmail.set(this.maskSensitiveInfo(this.loginResObj.email));
+          this.maskedPhone = (this.maskSensitiveInfo(this.loginResObj.phoneNo));
+          this.maskedEmail = (this.maskSensitiveInfo(this.loginResObj.email));
           this.confirmObj = {
             brandID: 1,
             campusID: 1,
@@ -205,9 +206,10 @@ export class LoginComponent {
     this.authService.confirmOtp(this.confirmObj).subscribe({
       next: (res: any) => {
         if (res) {
-          this.show('success','Login successfully','Website will navigate to dashboard', 3000);
           this.authService.setToken(res.token);
           this.router.navigateByUrl('dashboard');
+          this.show('success','Login successfully','Website will navigate to dashboard', 3000);
+
         }
       },
       error: (err) => {

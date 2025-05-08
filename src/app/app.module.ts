@@ -8,7 +8,6 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -19,6 +18,6 @@ import { ToastModule } from 'primeng/toast';
     ToastModule
   ],
   providers: [MessageService]
-  
+
 })
 export class AppModule { }

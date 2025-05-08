@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { PrimeNG } from 'primeng/config';
-import { Toast } from 'primeng/toast';
+import {  ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Toast],
+  // standalone: true,
+  imports: [RouterOutlet,ToastModule],
   providers:[MessageService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

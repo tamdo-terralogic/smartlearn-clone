@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -20,8 +20,8 @@ import { NgIf } from '@angular/common';
   styleUrl: './login.component.scss',
   imports:[
     FormsModule, InputTextModule, ButtonModule, PasswordModule, InputOtpModule, NgIf, ToastModule
-  ]
- // encapsulation: ViewEncapsulation.None, // <-- add this
+  ],
+ encapsulation: ViewEncapsulation.None, // <-- add this
 
 })
 
